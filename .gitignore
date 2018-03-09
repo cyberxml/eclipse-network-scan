@@ -1,5 +1,7 @@
 inbox/*pkl
 inbox/*xml
-*swp
+outbox/*pkl
+outbox/*xml
+*.swp
 .project
 .pydevproject

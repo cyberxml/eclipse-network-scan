@@ -6,7 +6,7 @@ import os
 import pickle
 
 # start with blank document root if no document exists
-a=assets.assets()
+
 
 # read the network config file(s)
 cfgfile="inbox/network1.config"
@@ -15,12 +15,15 @@ ip0=None
 ip1=None
 ns=[]
 dn=[]
+a=assets.assets()
 with open(cfgfile) as f:
     for line in f:
         if not line[0]=='#':
             s = line.strip().split(',')
             if s[0] == 'name':
                 n.id=s[1]
+            elif s[0] == 'site':
+                a.id=s[1]
             elif s[0] == 'hosts':
                 n.hosts=s[1]
             elif s[0] == 'ipstart':

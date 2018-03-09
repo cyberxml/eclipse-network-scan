@@ -19,12 +19,13 @@ protocols=[
     ]
 
 class assets:
-    def __init__(self, root=None, doc=None, networks={}):
+    def __init__(self, id=None, root=None, doc=None, networks={}):
         if not root:
             #self.root = etree.XML('''<ai:assets xmlns:ai="http://scap.nist.gov/schema/asset-identification/1.1" xmlns:core="http://scap.nist.gov/schema/reporting-core/1.1" xmlns:cpe="http://cpe.mitre.org/naming/2.0" xmlns:p="urn:oasis:names:tc:ciq:xsdschema:xNL:2.0" xmlns:p1="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://scap.nist.gov/schema/asset-identification/1.1 asset-identification_1.1.0.xsd "></ai:assets>''')
             self.root = etree.XML('''<assets></assets>''')
         else:
             self.root = root
+        self.id = id
         self.doc = etree.ElementTree(self.root)
         self.networks = networks
 
@@ -44,6 +45,7 @@ class assets:
         self.root = etree.XML('''<assets></assets>''')
         self.doc = etree.ElementTree(self.root)
         xnetworks=etree.SubElement(self.root,'networks')
+        xnetworks.set('id',self.id)
         try:
             for network in self.networks.keys():
                 try:
