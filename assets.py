@@ -86,9 +86,9 @@ class assets:
                                                 except:
                                                     pass # no fields in port
                                         except:
-                                             pass # no port in ports
+                                            pass # no port in ports
                             except:
-                                 pass # no node in nodes
+                                pass # no node in nodes
                     except:
                         pass # no nodes defined in network
                 except:

@@ -1,5 +1,5 @@
 #! /bin/python
-from lxml import etree
+#from lxml import etree
 import assets
 import nmap
 import os
@@ -31,8 +31,8 @@ with open(cfgfile) as f:
             elif s[0] == 'ipend':
                 ip1=s[1]
             elif s[0] == 'nameserver':
-                 ns.append(s[1])
-	elif s[0] == 'domainname':
+                ns.append(s[1])
+            elif s[0] == 'domainname':
                 dn.append(s[1])
     if ip0 and ip1:
         n.iprange=[ip0,ip1]
@@ -110,7 +110,7 @@ for nn in n.nodes.values():
                 print nn.ipv4, nn.id,str(k) 
                 nn.add_port(p)
             except:
-               pass
+                pass
     except:
         pass
 
@@ -153,6 +153,14 @@ for nn in n.nodes.values():
 print("--FOUR--")
 print(a.toxml())
 
+# create a site directory
+if not os.path.exists('outbox/'+a.id):
+    os.makedirs('outbox/'+a.id)
+    
+# write site.xml
+f = open('outbox/'+a.id+os.sep+a.id+".xml","w") 
+f.write(a.toxml())
+f.close 
 exit()
 
 
